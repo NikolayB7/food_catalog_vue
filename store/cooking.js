@@ -3,7 +3,7 @@ export const state = () => ({
   nutrientsKcal: {},
   totalNutrients: [],
   healthLabels: [],
-  dietLabels: []
+  dietLabels: [],
 })
 
 export const mutations = {
