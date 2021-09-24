@@ -1,14 +1,15 @@
 <!-- Please remove this file from your project -->
 <template>
   <div class="p-5">
-    <h3 class="text-center mb-5 font-semibold">Enter a product to search for a recipe</h3>
+    <h3 class="text-center mb-5 font-semibold">Enter a product to search</h3>
     <div class="flex mb-3">
-      <el-input placeholder="Enter product" class="mr-3" v-model="product"></el-input>
+      <el-input placeholder="1 cup rice,10 oz chickpeas" class="mr-3" v-model="product"></el-input>
       <el-button type="primary" @click="getNutrition" icon="el-icon-search">Search</el-button>
     </div>
     <div class="dietLabels mb-2">
       <template v-if="dietLabels.length">
-        <el-tag v-for="(item,idx) in dietLabels" :key="`${idx}-tagLabel`" type="success" class="mr-1 mb-1">{{item}}</el-tag>
+        <el-tag v-for="(item,idx) in dietLabels" :key="`${idx}-tagLabel`" type="success" class="mr-1 mb-1">{{item}}
+        </el-tag>
       </template>
     </div>
     <div class="tag">
@@ -17,19 +18,30 @@
       </template>
     </div>
 
-    <div class="nutrients">
-      {{nutrientsKcal}}
-<!--            <el-table-->
-<!--              :data="nutrientsKcal"-->
-<!--              style="width: 100%">-->
-<!--              <el-table-column-->
-<!--                v-for="(item,idx) in nutrientsKcal" :key="`${idx}-tr`"-->
-<!--                :prop="item.label"-->
-<!--                label="Label"-->
-<!--                width="180">-->
-<!--              </el-table-column>-->
-
-<!--            </el-table>-->
+    <div class="nutrients"  >
+      <table class="w-full" v-if="" >
+        <thead >
+        <tr
+          class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+          <th class="px-4 py-3">Label</th>
+          <th class="px-4 py-3">Quantity</th>
+          <th class="px-4 py-3">Unit</th>
+        </tr>
+        </thead>
+        <tbody class="bg-white">
+        <tr class="text-gray-700" v-for="(item,idx) in nutrientsKcal" :key="`${idx}-table`">
+          <td class="px-4 py-3 border">
+            {{item.label}}
+          </td>
+          <td class="px-4 py-3 text-ms font-semibold border">
+            {{item.quantity}}
+          </td>
+          <td class="px-4 py-3 text-xs border">
+            {{item.unit}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
