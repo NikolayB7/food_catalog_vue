@@ -1,12 +1,7 @@
 <!-- Please remove this file from your project -->
 <template>
   <div class="p-5">
-    <h3 class="text-center mb-5 font-semibold">Enter a product to search</h3>
 
-    <div class="flex mb-3">
-      <el-input placeholder="1 cup rice,10 oz chickpeas" class="mr-3"  v-model="product"></el-input>
-      <el-button type="primary" @click="getNutrition" icon="el-icon-search">Search</el-button>
-    </div>
 
     <div class="dietLabels mb-2">
       <template v-if="dietLabels.length">
@@ -56,25 +51,10 @@
       return {
         api: process.env.BASE_URL,
         product: '',
-        fullscreenLoading: false
+
       };
     },
-    methods: {
-      getNutrition() {
-        this.$store.dispatch("cooking/fetch", {
-          product: this.product
-        });
-        const loading = this.$loading({
-          lock: true,
-          text: 'Loading',
-          spinner: 'el-icon-loading',
-          background: 'rgba(0, 0, 0, 0.7)'
-        });
-        setTimeout(() => {
-          loading.close();
-        }, 2000);
-      }
-    },
+
     computed: {
       nutrientsKcal() {
         return this.$store.getters["cooking/getNutrientsKcal"];
